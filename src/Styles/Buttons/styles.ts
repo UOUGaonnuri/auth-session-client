@@ -13,6 +13,6 @@ export const ButtonCSS = css`
   color: white;
   text-align: center;
   border-radius: 10px;
-  background-color: #848484;
+  background-color: #5882fa;
   margin: 5px 10px 20px 10px;
 `;

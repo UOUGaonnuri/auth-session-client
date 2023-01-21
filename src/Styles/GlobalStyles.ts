@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 
@@ -26,12 +26,11 @@ export default createGlobalStyle`
 
 
 :root {
-    --primary: #000;
-    --primary-hover : #141414;
+    --primary: #ffffff;
     --secondary: #15181C;
     --search: #202327;
     --white: #D9D9D9;
     --gray: #7A7A7A;
     --outline: #2F3336;
 }
-`
+`;

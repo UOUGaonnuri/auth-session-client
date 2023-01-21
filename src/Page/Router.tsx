@@ -5,7 +5,7 @@ import Header from "../Component/Header";
 import AuthPage from "./AuthPage";
 import MainPage from "./MainPage";
 
-let isLoggedIn = true;
+let isLoggedIn = false;
 
 const AppRouter = () => {
   return (

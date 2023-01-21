@@ -1,8 +1,14 @@
 import styled from "styled-components";
 import { ButtonCSS } from "@/Styles/Buttons/styles";
+import { Container } from "@/Styles/Container/styles";
+
+export const AuthContainer = styled(Container)`
+  background-color: #a9f5f2;
+`;
 
 export const Title = styled.h1`
   margin-bottom: 10px;
+  color: #000;
 `;
 
 export const AuthForm = styled.form`
@@ -15,9 +21,6 @@ export const AuthForm = styled.form`
   flex-direction: column;
   justify-content: center;
   position: relative;
-  h2 {
-    color: #000;
-  }
 `;
 export const FormInput = styled.input`
   width: 100%;
@@ -25,7 +28,7 @@ export const FormInput = styled.input`
   margin-bottom: 10px;
   border-radius: 10px;
   text-align: center;
-  background-color: #d9d9d9;
+  background-color: #ffffff;
   color: #000;
 `;
 

@@ -1,9 +1,12 @@
+import TodoCard from "@/Component/TodoCard";
 import { Container } from "@/Styles/Container/styles";
+import { TextField } from "@mui/material";
 
 const MainPage = () => {
   return (
     <Container>
-      <div>Wassup</div>
+      <TextField id="standard-search" type="search" variant="standard" />
+      <TodoCard />
     </Container>
   );
 };
