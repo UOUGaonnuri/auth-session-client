@@ -3,7 +3,7 @@ import { ButtonCSS } from "@/Styles/Buttons/styles";
 import { Container } from "@/Styles/Container/styles";
 
 export const AuthContainer = styled(Container)`
-  background-color: #a9f5f2;
+  background-color: #effbfb;
 `;
 
 export const Title = styled.h1`

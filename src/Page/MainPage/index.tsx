@@ -1,13 +1,22 @@
+import AddTodo from "@/Component/AddTodo";
 import TodoCard from "@/Component/TodoCard";
-import { Container } from "@/Styles/Container/styles";
-import { TextField } from "@mui/material";
+import { MainContainer, TodoContainer } from "./styles";
 
 const MainPage = () => {
   return (
-    <Container>
-      <TextField id="standard-search" type="search" variant="standard" />
-      <TodoCard />
-    </Container>
+    <MainContainer>
+      <AddTodo />
+      <TodoContainer>
+        <TodoCard />
+        <TodoCard />
+        <TodoCard />
+        <TodoCard />
+        <TodoCard />
+        <TodoCard />
+        <TodoCard />
+        <TodoCard />
+      </TodoContainer>
+    </MainContainer>
   );
 };
 

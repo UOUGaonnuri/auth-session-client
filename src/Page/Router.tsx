@@ -10,7 +10,7 @@ let isLoggedIn = false;
 const AppRouter = () => {
   return (
     <Router>
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <>
           <RootWrapper>
             <Header />
