@@ -1,15 +1,5 @@
-import styled, { css } from "styled-components";
-import { styled as MUIStyled } from "@mui/system";
-
-export const Container = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-`;
+import styled from "styled-components";
+import { ButtonCSS } from "@/Styles/Buttons/styles";
 
 export const Title = styled.h1`
   margin-bottom: 10px;
@@ -37,23 +27,6 @@ export const FormInput = styled.input`
   text-align: center;
   background-color: #d9d9d9;
   color: #000;
-`;
-
-export const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-const ButtonCSS = css`
-  cursor: pointer;
-  width: 100%;
-  padding: 7px 20px;
-  color: white;
-  text-align: center;
-  border-radius: 10px;
-  background-color: #848484;
-  margin: 5px 10px 20px 10px;
 `;
 
 export const FormInputButton = styled.input`

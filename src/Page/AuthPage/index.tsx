@@ -1,8 +1,8 @@
+import { ButtonContainer } from "@/Styles/Buttons/styles";
+import { Container } from "@/Styles/Container/styles";
 import {
   AuthForm,
-  ButtonContainer,
   CommonButton,
-  Container,
   FormInput,
   FormInputButton,
   Title,
