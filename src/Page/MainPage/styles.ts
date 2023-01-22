@@ -5,6 +5,8 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  position: relative;
 `;
 
 export const TodoInputField = MUIStyled(TextField)({
@@ -14,6 +16,8 @@ export const TodoInputField = MUIStyled(TextField)({
 export const TodoContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   width: 50%;
   overflow-x: hidden;
