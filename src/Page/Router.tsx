@@ -1,3 +1,4 @@
+import { RootWrapper } from "@/Component/LayoutStyles/styles";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
@@ -9,13 +10,15 @@ let isLoggedIn = false;
 const AppRouter = () => {
   return (
     <Router>
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <>
-          <Header />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-          </Routes>
-          <Footer />
+          <RootWrapper>
+            <Header />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+            </Routes>
+            <Footer />
+          </RootWrapper>
         </>
       ) : (
         <>

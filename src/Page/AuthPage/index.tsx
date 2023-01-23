@@ -1,8 +1,8 @@
+import { ButtonContainer } from "@/Styles/Buttons/styles";
 import {
+  AuthContainer,
   AuthForm,
-  ButtonContainer,
   CommonButton,
-  Container,
   FormInput,
   FormInputButton,
   Title,
@@ -10,7 +10,7 @@ import {
 
 const AuthPage = () => {
   return (
-    <Container>
+    <AuthContainer>
       <Title> Hello</Title>
       <AuthForm>
         <FormInput type="text" placeholder="Username" />
@@ -20,7 +20,7 @@ const AuthPage = () => {
           <CommonButton>Sign Up</CommonButton>
         </ButtonContainer>
       </AuthForm>
-    </Container>
+    </AuthContainer>
   );
 };
 
