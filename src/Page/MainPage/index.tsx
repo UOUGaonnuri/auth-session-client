@@ -1,15 +1,21 @@
 import AddTodo from "@/Component/AddTodo";
 import TodoCard from "@/Component/TodoCard";
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  ListSubheader,
-} from "@mui/material";
+import { CustomAxios } from "@/Service/API/CustomAxios";
+import { List } from "@mui/material";
+import { useEffect } from "react";
 import { MainContainer } from "./styles";
 
 const MainPage = () => {
+  useEffect(() => {
+    CustomAxios.get("/api/v1/todo/test")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((ex) => {
+        console.log(ex);
+      });
+  }, []);
+
   return (
     <MainContainer>
       <AddTodo />
