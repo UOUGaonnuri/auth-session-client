@@ -7,7 +7,7 @@ import {
   ListItemText,
   ListSubheader,
 } from "@mui/material";
-import { MainContainer, TodoContainer } from "./styles";
+import { MainContainer } from "./styles";
 
 const MainPage = () => {
   return (
@@ -20,7 +20,7 @@ const MainPage = () => {
           maxWidth: 750,
           position: "relative",
           overflow: "auto",
-          maxHeight: 600,
+          maxHeight: 400,
           "& ul": { padding: 0 },
         }}
       >
