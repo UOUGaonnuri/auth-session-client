@@ -32,7 +32,8 @@ const AuthPage = () => {
       password: password,
     };
     loginRequest(loginForm)
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         loginSuccess(loginForm);
         window.location.reload();
       })

@@ -8,15 +8,18 @@ function createBasicAuthToken(username: string, password: string) {
 }
 
 export function loginRequest(props: LoginForm) {
-  return CustomAxios.post("/api/auth/v1/login", props, {
-    headers: {
-      authorization: createBasicAuthToken(props.userName, props.password),
-    },
-  });
+  return CustomAxios.post("/api/auth/v1/login", props);
 }
 
 export function loginSuccess(props: LoginForm) {
   sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, props.userName);
+  CustomAxios.interceptors.request.use((config) => {
+    config.headers.authrization = createBasicAuthToken(
+      props.userName,
+      props.password
+    );
+    return config;
+  });
 }
 
 export function logout() {
