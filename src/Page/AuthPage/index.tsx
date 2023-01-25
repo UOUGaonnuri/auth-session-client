@@ -1,6 +1,7 @@
 import { LoginForm } from "@/Store/Type/Auth/Auth";
 import { ButtonContainer } from "@/Styles/Buttons/styles";
 import { useState } from "react";
+import AuthService from "@/Service/Auth/AuthService";
 import {
   AuthContainer,
   AuthForm,
@@ -9,12 +10,14 @@ import {
   FormInputButton,
   Title,
 } from "./styles";
-import { loginRequest, loginSuccess } from "@/Service/Auth/AuthService";
+import { useSetRecoilState } from "recoil";
+import { userState } from "@/Store/Data/User/User";
+import { UserDetail } from "@/Store/Type/User/User";
 
 const AuthPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const setUserInfo = useSetRecoilState<UserDetail>(userState);
   const onChangeInput = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.currentTarget;
     if (target.name === "username") {
@@ -31,10 +34,18 @@ const AuthPage = () => {
       userName: username,
       password: password,
     };
-    loginRequest(loginForm)
+    AuthService.loginRequest(loginForm)
       .then((res) => {
         console.log(res);
-        loginSuccess(loginForm);
+        alert("로그인 되었습니다." + res.data.data);
+        AuthService.loginSuccess(loginForm);
+        const response: UserDetail = res.data.data;
+        setUserInfo({
+          userId: response.userId,
+          userName: response.userName,
+          userEmail: response.userEmail,
+          role: response.role,
+        });
         window.location.reload();
       })
       .catch((e) => {

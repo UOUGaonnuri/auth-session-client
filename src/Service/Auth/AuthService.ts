@@ -3,25 +3,44 @@ import { CustomAxios } from "../API/CustomAxios";
 
 export const USER_NAME_SESSION_ATTRIBUTE_NAME = "AuthenticatedUser";
 
-function createBasicAuthToken(username: string, password: string) {
-  return "Basic " + window.btoa(username + ":" + password);
-}
+class AuthService {
+  loginRequest(params: LoginForm) {
+    return CustomAxios.post("/api/auth/v1/login", params);
+  }
 
-export function loginRequest(props: LoginForm) {
-  return CustomAxios.post("/api/auth/v1/login", props);
-}
+  createBasicAuthToken(username: string, password: string) {
+    return "Basic " + window.btoa(username + ":" + password);
+  }
 
-export function loginSuccess(props: LoginForm) {
-  sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, props.userName);
-  CustomAxios.interceptors.request.use((config) => {
-    config.headers.authrization = createBasicAuthToken(
-      props.userName,
-      props.password
+  loginSuccess(params: LoginForm) {
+    sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, params.userName);
+    this.setupAxiosInterceptors(
+      this.createBasicAuthToken(params.userName, params.password)
     );
-    return config;
-  });
+  }
+
+  setupAxiosInterceptors(token: string) {
+    CustomAxios.interceptors.request.use((config) => {
+      if (this.isUserLoggedIn()) {
+        config.headers.authrization = token;
+      }
+      return config;
+    });
+  }
+
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+    if (user === null) return false;
+    return true;
+  }
+
+  logout() {
+    return CustomAxios.post("/api/auth/v1/logout");
+  }
+
+  removeUserData() {
+    sessionStorage.removeItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+  }
 }
 
-export function logout() {
-  sessionStorage.removeItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
-}
+export default new AuthService();
