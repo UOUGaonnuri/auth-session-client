@@ -2,29 +2,21 @@ import { userState } from "@/Store/Data/User/User";
 import { Button, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
-import TodoService from "@/Service/Todo/TodoService";
 
-const AddTodo = () => {
+interface props {
+  addTodo: (
+    e: React.MouseEvent<HTMLButtonElement>,
+    todoContent: string
+  ) => Promise<void>;
+}
+
+const AddTodo = (addTodo: props) => {
   const [todoContent, setTodoContent] = useState("");
-  const userInfo = useRecoilValue(userState);
 
   const onChangeTodoContent = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
     setTodoContent(e.target.value);
-  };
-
-  const onClickSubmit = () => {
-    TodoService.addTodoRequest({
-      userId: userInfo.userId,
-      content: todoContent,
-    })
-      .then(() => {
-        alert("Todo 가 등록되었습니다.");
-      })
-      .catch(() => {
-        alert("Todo 등록에 실패하였습니다.");
-      });
   };
 
   return (
@@ -43,7 +35,7 @@ const AddTodo = () => {
           style={{ height: "100%" }}
           color="secondary"
           variant="outlined"
-          onClick={onClickSubmit}
+          onClick={(e) => addTodo.addTodo(e, todoContent)}
         >
           +
         </Button>

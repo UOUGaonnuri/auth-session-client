@@ -36,8 +36,7 @@ const AuthPage = () => {
     };
     AuthService.loginRequest(loginForm)
       .then((res) => {
-        console.log(res);
-        alert("로그인 되었습니다." + res.data.data);
+        alert("로그인 되었습니다.");
         AuthService.loginSuccess(loginForm);
         const response: UserDetail = res.data.data;
         setUserInfo({

@@ -3,35 +3,16 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import TodoService from "@/Service/Todo/TodoService";
 
 interface TodoProps {
   todoId: number;
   todoContent: string;
   todoStatus: string;
+  onClickDelete: (todoId: number) => Promise<void>;
+  onClickChangeStatus: (todoId: number) => void;
 }
 
 const TodoCard = (props: TodoProps) => {
-  const onClickDelete = () => {
-    TodoService.deleteTodoRequest(props.todoId)
-      .then(() => {
-        alert("삭제 되었습니다.");
-      })
-      .catch(() => {
-        alert("삭제하는 데 실패하였습니다.");
-      });
-  };
-
-  const onClickChangeStatus = () => {
-    TodoService.changeTodoStatus(props.todoId)
-      .then(() => {
-        alert("변경 되었습니다.");
-      })
-      .catch(() => {
-        alert("변경하는 데 실패하였습니다.");
-      });
-  };
-
   return (
     <Card
       sx={{ minWidth: 275 }}
@@ -55,10 +36,13 @@ const TodoCard = (props: TodoProps) => {
         )}
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={onClickChangeStatus}>
+        <Button
+          size="small"
+          onClick={() => props.onClickChangeStatus(props.todoId)}
+        >
           Done
         </Button>
-        <Button size="small" onClick={onClickDelete}>
+        <Button size="small" onClick={() => props.onClickDelete(props.todoId)}>
           Delete
         </Button>
       </CardActions>
