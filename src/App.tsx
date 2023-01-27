@@ -1,6 +1,6 @@
-import AppRouter from "./Page/Router";
 import { RecoilRoot } from "recoil";
-import GlobalStyles from "./Styles/GlobalStyles";
+import AppRouter from "@/Page/Router";
+import GlobalStyles from "@/Styles/GlobalStyles";
 
 function App() {
   return (

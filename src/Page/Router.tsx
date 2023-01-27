@@ -1,26 +1,31 @@
+import { RootWrapper } from "@/Component/LayoutStyles/styles";
+import { USER_NAME_SESSION_ATTRIBUTE_NAME } from "@/Service/Auth/AuthService";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import AuthPage from "./AuthPage";
 import MainPage from "./MainPage";
-
-let isLoggedIn = false;
+import SignupPage from "./SignupPage";
 
 const AppRouter = () => {
+  const userInfo = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
   return (
     <Router>
-      {isLoggedIn ? (
+      {userInfo ? (
         <>
-          <Header />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-          </Routes>
-          <Footer />
+          <RootWrapper>
+            <Header />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+            </Routes>
+            <Footer />
+          </RootWrapper>
         </>
       ) : (
         <>
           <Routes>
             <Route path="/" element={<AuthPage />} />
+            <Route path="/signup" element={<SignupPage />} />
           </Routes>
         </>
       )}

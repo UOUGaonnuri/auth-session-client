@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ButtonCSS } from "@/Styles/Buttons/styles";
 import { Container } from "@/Styles/Container/styles";
 
-export const AuthContainer = styled(Container)`
+export const SignupContainer = styled(Container)`
   background-color: #effbfb;
 `;
 
@@ -11,7 +11,7 @@ export const Title = styled.h1`
   color: #000;
 `;
 
-export const AuthForm = styled.form`
+export const SignupForm = styled.form`
   margin: 0 auto;
   width: 100%;
   max-width: 414px;
