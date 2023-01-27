@@ -1,9 +1,13 @@
-import { LoginForm } from "@/Store/Type/Auth/Auth";
+import { LoginForm, RegisterForm } from "@/Store/Type/Auth/Auth";
 import { CustomAxios } from "../API/CustomAxios";
 
 export const USER_NAME_SESSION_ATTRIBUTE_NAME = "AuthenticatedUser";
 
 class AuthService {
+  registerRequest(params: RegisterForm) {
+    return CustomAxios.post("/api/auth/v1/register", params);
+  }
+
   loginRequest(params: LoginForm) {
     return CustomAxios.post("/api/auth/v1/login", params);
   }
