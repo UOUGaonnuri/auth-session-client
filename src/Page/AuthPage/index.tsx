@@ -13,11 +13,15 @@ import {
 import { useSetRecoilState } from "recoil";
 import { userState } from "@/Store/Data/User/User";
 import { UserDetail } from "@/Store/Type/User/User";
+import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const setUserInfo = useSetRecoilState<UserDetail>(userState);
+
+  const navigate = useNavigate();
+
   const onChangeInput = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.currentTarget;
     if (target.name === "username") {
@@ -62,6 +66,7 @@ const AuthPage = () => {
           placeholder="Username"
           onChange={onChangeInput}
           value={username}
+          required
         />
         <FormInput
           name="password"
@@ -69,10 +74,13 @@ const AuthPage = () => {
           placeholder="Password"
           onChange={onChangeInput}
           value={password}
+          required
         />
         <ButtonContainer>
           <FormInputButton type="submit" value="Sign In" />
-          <CommonButton>Sign Up</CommonButton>
+          <CommonButton onClick={() => navigate("/signup")}>
+            Sign Up
+          </CommonButton>
         </ButtonContainer>
       </AuthForm>
     </AuthContainer>
