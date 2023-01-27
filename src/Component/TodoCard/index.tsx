@@ -4,7 +4,15 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const TodoCard = () => {
+interface TodoProps {
+  todoId: number;
+  todoContent: string;
+  todoStatus: string;
+  onClickDelete: (todoId: number) => Promise<void>;
+  onClickChangeStatus: (todoId: number) => void;
+}
+
+const TodoCard = (props: TodoProps) => {
   return (
     <Card
       sx={{ minWidth: 275 }}
@@ -15,11 +23,28 @@ const TodoCard = () => {
       }}
     >
       <CardContent>
-        <Typography color="text.secondary">집 가서 짱깨먹기</Typography>
+        {props.todoStatus === "ASSIGNED" ? (
+          <>
+            <Typography color="text.primary">{props.todoContent}</Typography>
+          </>
+        ) : (
+          <>
+            <Typography color="text.secondary">
+              {props.todoContent} (Done)
+            </Typography>
+          </>
+        )}
       </CardContent>
       <CardActions>
-        <Button size="small">Check</Button>
-        <Button size="small">Done</Button>
+        <Button
+          size="small"
+          onClick={() => props.onClickChangeStatus(props.todoId)}
+        >
+          Done
+        </Button>
+        <Button size="small" onClick={() => props.onClickDelete(props.todoId)}>
+          Delete
+        </Button>
       </CardActions>
     </Card>
   );
