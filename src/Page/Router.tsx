@@ -1,6 +1,7 @@
 import { RootWrapper } from "@/Component/LayoutStyles/styles";
-import { USER_NAME_SESSION_ATTRIBUTE_NAME } from "@/Service/Auth/AuthService";
+import { userState } from "@/Store/Data/User/User";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import AuthPage from "./AuthPage";
@@ -8,10 +9,10 @@ import MainPage from "./MainPage";
 import SignupPage from "./SignupPage";
 
 const AppRouter = () => {
-  const userInfo = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+  const userInfo = useRecoilValue(userState);
   return (
     <Router>
-      {userInfo ? (
+      {userInfo.userId !== 0 ? (
         <>
           <RootWrapper>
             <Header />
