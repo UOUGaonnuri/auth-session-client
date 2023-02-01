@@ -1,4 +1,4 @@
-import AuthService from "@/Service/Auth/AuthService";
+import { registerRequest } from "@/Service/Auth/AuthService";
 import { RegisterForm } from "@/Store/Type/Auth/Auth";
 import { ButtonContainer } from "@/Styles/Buttons/styles";
 import { useState } from "react";
@@ -38,7 +38,7 @@ const SignupPage = () => {
       password: password,
     };
 
-    AuthService.registerRequest(registerForm)
+    registerRequest(registerForm)
       .then(() => {
         alert("회원 가입에 성공하였습니다.");
         navigate("/");

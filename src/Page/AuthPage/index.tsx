@@ -1,7 +1,6 @@
 import { LoginForm } from "@/Store/Type/Auth/Auth";
 import { ButtonContainer } from "@/Styles/Buttons/styles";
 import { useState } from "react";
-import AuthService from "@/Service/Auth/AuthService";
 import {
   AuthContainer,
   AuthForm,
@@ -14,6 +13,7 @@ import { useSetRecoilState } from "recoil";
 import { userState } from "@/Store/Data/User/User";
 import { UserDetail } from "@/Store/Type/User/User";
 import { useNavigate } from "react-router-dom";
+import { loginRequest } from "@/Service/Auth/AuthService";
 
 const AuthPage = () => {
   const [username, setUsername] = useState("");
@@ -38,10 +38,9 @@ const AuthPage = () => {
       userName: username,
       password: password,
     };
-    AuthService.loginRequest(loginForm)
+    loginRequest(loginForm)
       .then((res) => {
         alert("로그인 되었습니다.");
-        AuthService.loginSuccess(loginForm);
         const response: UserDetail = res.data.data;
         setUserInfo({
           userId: response.userId,
